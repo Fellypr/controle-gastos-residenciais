@@ -9,6 +9,7 @@ const moradores = [
     despesas: 300,
   },
   {
+    
     id: 2,
     nome: "Ana",
     idade: 25,
