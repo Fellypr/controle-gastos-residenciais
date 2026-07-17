@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.cadastro-morador {
+  width: 100%;
+  max-width: 400px;
+  min-height: 356px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+
+  font-family: "Inter", sans-serif;
+
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.cadastro-morador__titulo {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.cadastro-morador__campo {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cadastro-morador__campo--idade {
+  width: 160px;
+}
+
+.cadastro-morador__campo label {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cadastro-morador__campo input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 14px;
+
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.cadastro-morador__campo input::placeholder {
+  color: #94a3b8;
+}
+
+.cadastro-morador__campo input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.cadastro-morador__botao {
+  width: 100%;
+  height: 44px;
+
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  background-color: #2563eb;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.cadastro-morador__botao:hover {
+  background-color: #1d4ed8;
+}
+
+.cadastro-morador__botao:active {
+  background-color: #1e40af;
+}
+
+@media (max-width: 450px) {
+  .cadastro-morador {
+    max-width: 100%;
+  }
+
+  .cadastro-morador__campo--idade {
+    width: 100%;
+  }
+}
