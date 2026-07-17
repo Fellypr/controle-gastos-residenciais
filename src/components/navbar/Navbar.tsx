@@ -1,15 +1,16 @@
 import "./Navbar.css";
+import { Link, NavLink } from "react-router-dom";
 
-export default function Navbar({ activePage = "inicio" }) {
+export default function Navbar() {
   const links = [
     { id: "inicio", label: "Início", href: "/" },
-    { id: "moradores", label: "Moradores", href: "/moradores" },
+    { id: "moradores", label: "Moradores", href: "/cadastro-de-moradores" },
     { id: "lancamentos", label: "Lançamentos", href: "/lancamentos" },
   ];
 
   return (
     <header className="navbar">
-      <a href="/" className="navbar__logo" aria-label="CasaFin - Início">
+      <Link to="/" className="navbar__logo" aria-label="CasaFin - Início">
         <span className="navbar__logo-icon">
           <svg
             viewBox="0 0 24 24"
@@ -23,25 +24,20 @@ export default function Navbar({ activePage = "inicio" }) {
         </span>
 
         <span className="navbar__brand">CasaFin</span>
-      </a>
+      </Link>
 
       <nav className="navbar__menu" aria-label="Menu principal">
-        {links.map((link) => {
-          const isActive = activePage === link.id;
-
-          return (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`navbar__link ${
-                isActive ? "navbar__link--active" : ""
-              }`}
-              aria-current={isActive ? "page" : undefined}
-            >
-              {link.label}
-            </a>
-          );
-        })}
+        {links.map((link) => (
+          <NavLink
+            key={link.id}
+            to={link.href}
+            className={({ isActive }) =>
+              `navbar__link ${isActive ? "navbar__link--active" : ""}`
+            }
+          >
+            {link.label}
+          </NavLink>
+        ))}
       </nav>
     </header>
   );
