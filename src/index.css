@@ -1,0 +1,54 @@
+:root {
+  /* --- Tipografia --- */
+  --font-family: 'Inter', sans-serif;
+  
+  /* Tamanhos de Fonte */
+  --font-size-title: 24px;
+  --font-size-subtitle: 16px;
+  --font-size-body: 14px;
+  
+  /* Pesos de Fonte (Font Weights) */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* --- Cores --- */
+  /* Fundos */
+  --color-bg-screen: #F8FAFC; /* Slate 50 */
+  --color-bg-card: #FFFFFF;   /* Branco puro */
+  
+  /* Textos */
+  --color-text-primary: #0F172A;   /* Slate 900 */
+  --color-text-secondary: #64748B; /* Slate 500 */
+  
+  /* Estados / Semântica (Financeiro) */
+  --color-success: #10B981; /* Emerald 500 - Receitas/Saldo Positivo */
+  --color-danger: #EF4444;  /* Red 500 - Despesas/Saldo Negativo */
+  
+  /* Destaques / Botões / Menus */
+  --color-accent: #2563EB;      /* Azul Principal */
+  --color-accent-dark: #1E3A8A; /* Azul Escuro (Ótimo para Hover ou Menus) */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Tipografia */
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  background-color: var(--color-bg-screen);
+  min-height: 100vh; 
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+
+

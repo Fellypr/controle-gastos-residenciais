@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+:root {
+  --summary-border: #e2e8f0;
+  --summary-secondary-text: #64748b;
+
+  --summary-income: #16a34a;
+  --summary-income-background: #f0fdf4;
+
+  --summary-expense: #dc2626;
+  --summary-expense-background: #fef2f2;
+
+  --summary-balance: #2563eb;
+  --summary-balance-background: #eff6ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.summary-cards {
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  font-family: "Inter", sans-serif;
+}
+
+.summary-card {
+  min-width: 0;
+  height: 150px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+
+  background-color: #ffffff;
+  border: 1px solid var(--summary-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.summary-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.summary-card__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+}
+
+.summary-card__icon svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.summary-card__title {
+  margin: 0;
+
+  color: var(--summary-secondary-text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.summary-card__value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+
+.summary-card--income .summary-card__icon {
+  color: var(--summary-income);
+  background-color: var(--summary-income-background);
+}
+
+.summary-card--income .summary-card__value {
+  color: var(--summary-income);
+}
+
+
+.summary-card--expense .summary-card__icon {
+  color: var(--summary-expense);
+  background-color: var(--summary-expense-background);
+}
+
+.summary-card--expense .summary-card__value {
+  color: var(--summary-expense);
+}
+
+
+.summary-card--balance .summary-card__icon {
+  color: var(--summary-balance);
+  background-color: var(--summary-balance-background);
+}
+
+.summary-card--balance .summary-card__value {
+  color: var(--summary-balance);
+}
+
+
+@media (max-width: 900px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .summary-card--balance {
+    grid-column: 1 / -1;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card,
+  .summary-card--balance {
+    grid-column: auto;
+  }
+
+  .summary-card {
+    height: auto;
+    min-height: 140px;
+  }
+}
