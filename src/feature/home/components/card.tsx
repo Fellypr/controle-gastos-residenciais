@@ -27,6 +27,7 @@ const BalanceIcon = (): ReactNode => (
   </svg>
 );
 
+// aqui eu deixei cada tipo de card ligado ao seu icone
 const icons: Record<SummaryCardVariant, ReactNode> = {
   income: <IncomeIcon />,
   expense: <ExpenseIcon />,
@@ -49,19 +50,21 @@ function SummaryCard({
       </div>
 
       <strong className="summary-card__value">
+        {/* esse hook formata o numero para aparecer como moeda certinho */}
         {formatCurrency(value, locale, currency)}
       </strong>
     </article>
   );
 }
 
-export default function SummaryCards({
+export function SummaryCards({
   income,
   expenses,
   balance = income - expenses,
   locale = "pt-BR",
   currency = "BRL",
 }: SummaryCardsProps) {
+  // monto os 3 cards aqui para depois renderizar tudo com map
   const cards: SummaryCardData[] = [
     {
       id: "income",
@@ -85,6 +88,7 @@ export default function SummaryCards({
 
   return (
     <section className="summary-cards" aria-label="Resumo financeiro">
+      {/* o map evita repetir o mesmo componente varias vezes na mao */}
       {cards.map((card) => (
         <SummaryCard
           key={card.id}
