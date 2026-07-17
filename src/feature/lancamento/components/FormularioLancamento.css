@@ -1,0 +1,134 @@
+.lancamento-card {
+  width: 100%;
+  max-width: 468px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  top: 22px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.lancamento-titulo {
+  margin: 0;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label,
+.campo-label {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.campo input,
+.select-estatico {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+
+  color: #0f172a;
+  font-size: 14px;
+
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.campo input::placeholder {
+  color: #94a3b8;
+}
+
+.campo input:focus {
+  outline: none;
+}
+
+.select-estatico {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seta {
+  color: #64748b;
+  font-size: 18px;
+}
+
+.tipos {
+  display: flex;
+  gap: 12px;
+}
+
+.tipo {
+  width: 112px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: #64748b;
+  font-size: 14px;
+
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.tipo-ativo {
+  color: #2563eb;
+  background-color: #eff6ff;
+  border-color: #2563eb;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid #94a3b8;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.radio-ativo {
+  background-color: #2563eb;
+  border: 4px solid #dbeafe;
+  outline: 1px solid #2563eb;
+}
+.botao-cadastrar {
+  width: 100%;
+  height: 44px;
+
+  color: #ffffff;
+  background-color: #0056d2;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.botao-cadastrar:hover {
+  background-color: #0046ad;
+}
