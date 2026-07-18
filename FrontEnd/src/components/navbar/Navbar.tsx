@@ -1,5 +1,5 @@
 import "./Navbar.css";
-
+import { Link } from "react-router-dom";
 export default function Navbar({ activePage = "inicio" }) {
   const links = [
     { id: "inicio", label: "Início", href: "/" },
@@ -30,16 +30,16 @@ export default function Navbar({ activePage = "inicio" }) {
           const isActive = activePage === link.id;
 
           return (
-            <a
+            <Link
               key={link.id}
-              href={link.href}
+              to={link.href}
               className={`navbar__link ${
                 isActive ? "navbar__link--active" : ""
               }`}
               aria-current={isActive ? "page" : undefined}
             >
               {link.label}
-            </a>
+            </Link>
           );
         })}
       </nav>

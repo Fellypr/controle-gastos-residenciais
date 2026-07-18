@@ -1,5 +1,5 @@
 import { SummaryCards, MoradoresCadastradoTable } from "../../feature/home";
-
+import Navbar from "../../components/navbar/Navbar";
 const moradores = [
   {
     id: 1,
@@ -20,6 +20,7 @@ const moradores = [
 export default function Home() {
   return (
     <section>
+      <Navbar activePage="inicio" />
       <SummaryCards income={5200} expenses={2400} balance={2800} />
       <MoradoresCadastradoTable moradores={moradores} />
     </section>
