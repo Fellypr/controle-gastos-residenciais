@@ -1,12 +1,12 @@
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Home from "./pages/home/Home";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <Navbar activePage="inicio" />
-      <Home/>
+      <Outlet/>
     </div>
   );
 }

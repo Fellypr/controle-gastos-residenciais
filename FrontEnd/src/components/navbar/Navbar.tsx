@@ -3,7 +3,7 @@ import "./Navbar.css";
 export default function Navbar({ activePage = "inicio" }) {
   const links = [
     { id: "inicio", label: "Início", href: "/" },
-    { id: "moradores", label: "Moradores", href: "/moradores" },
+    { id: "moradores", label: "Moradores", href: "/cadastro-de-moradores" },
     { id: "lancamentos", label: "Lançamentos", href: "/lancamentos" },
   ];
 

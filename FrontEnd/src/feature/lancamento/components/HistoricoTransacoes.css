@@ -109,6 +109,54 @@
   color: #991b1b;
   background-color: #fee2e2;
 }
+.campo-busca {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 24px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.icone-busca {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  fill: none;
+  stroke: #64748b;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.campo-busca input {
+  width: 100%;
+  height: 100%;
+
+  color: #334155;
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.campo-busca input::placeholder {
+  color: #94a3b8;
+}
+
+.campo-busca input::-webkit-search-cancel-button {
+  display: none;
+}
 
 @media (max-width: 720px) {
   .historico-card {

@@ -5,6 +5,23 @@ export function HistoricoTransacoes() {
     <section className="historico-card">
       <h2>Histórico de Transações</h2>
 
+      <div className="campo-busca">
+        <svg
+          className="icone-busca"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7" />
+          <path d="M16 16L21 21" />
+        </svg>
+
+        <input
+          type="search"
+          placeholder="Buscar transação..."
+          aria-label="Buscar transação"
+        />
+      </div>
+
       <div className="tabela-container">
         <table className="historico-tabela">
           <thead>
