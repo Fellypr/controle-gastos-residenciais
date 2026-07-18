@@ -6,6 +6,7 @@ namespace Backend.interfaces
     {
         Task<MoradorResponseDto>CadastrarMoradoresAsync(CadastrarMoradorDto moradorDto);
         Task<bool> DeletarMorador (int id);
+        Task<IEnumerable<MoradorResponseDto>>ObterTodosOsMoradores();
 
     }
 }
