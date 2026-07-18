@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "dgSpecHash": "CKkEwPpvIOY=",
+  "success": true,
+  "projectFilePath": "/home/fellype/Documentos/Projetos/Controle_de_Gastos_Residenciais/BackEnd/tests/SimpleTests.csproj",
+  "expectedPackageFiles": [
+    "/home/fellype/.nuget/packages/microsoft.aspnetcore.openapi/10.0.9/microsoft.aspnetcore.openapi.10.0.9.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.data.sqlite.core/10.0.10/microsoft.data.sqlite.core.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore/10.0.10/microsoft.entityframeworkcore.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.10/microsoft.entityframeworkcore.abstractions.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.10/microsoft.entityframeworkcore.analyzers.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.10/microsoft.entityframeworkcore.relational.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore.sqlite/10.0.10/microsoft.entityframeworkcore.sqlite.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/10.0.10/microsoft.entityframeworkcore.sqlite.core.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.caching.abstractions/10.0.10/microsoft.extensions.caching.abstractions.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.caching.memory/10.0.10/microsoft.extensions.caching.memory.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.10/microsoft.extensions.configuration.abstractions.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.dependencyinjection/10.0.10/microsoft.extensions.dependencyinjection.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.10/microsoft.extensions.dependencyinjection.abstractions.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.dependencymodel/10.0.10/microsoft.extensions.dependencymodel.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.logging/10.0.10/microsoft.extensions.logging.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.10/microsoft.extensions.logging.abstractions.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.options/10.0.10/microsoft.extensions.options.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.extensions.primitives/10.0.10/microsoft.extensions.primitives.10.0.10.nupkg.sha512",
+    "/home/fellype/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
+    "/home/fellype/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.11/sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
+    "/home/fellype/.nuget/packages/sqlitepclraw.core/2.1.11/sqlitepclraw.core.2.1.11.nupkg.sha512",
+    "/home/fellype/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.11/sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
+    "/home/fellype/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.11/sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "O pacote 'Microsoft.OpenApi' 2.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "/home/fellype/Documentos/Projetos/Controle_de_Gastos_Residenciais/BackEnd/tests/SimpleTests.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/fellype/Documentos/Projetos/Controle_de_Gastos_Residenciais/BackEnd/tests/SimpleTests.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "O pacote 'SQLitePCLRaw.lib.e_sqlite3' 2.1.11 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-2m69-gcr7-jv3q",
+      "projectPath": "/home/fellype/Documentos/Projetos/Controle_de_Gastos_Residenciais/BackEnd/tests/SimpleTests.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/fellype/Documentos/Projetos/Controle_de_Gastos_Residenciais/BackEnd/tests/SimpleTests.csproj",
+      "libraryId": "SQLitePCLRaw.lib.e_sqlite3",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

@@ -2,9 +2,9 @@ using Backend.dtos;
 
 namespace Backend.interfaces
 {
-    public interface IMorador
+    public interface IMoradorService
     {
-        Task<CadastrarMoradorDto>CadastrarMorador(CadastrarMoradorDto moradorDto);
+        Task<MoradorResponseDto>CadastrarMoradoresAsync(CadastrarMoradorDto moradorDto);
 
     }
 }
