@@ -71,4 +71,46 @@ public static class CadastrarMoradoresTests
             }
         }
     }
+
+    public static async Task TesteDeletarMoradorComSucesso()
+    {
+        await using var testContext = await TestContextFactory.CriarContextoAsync();
+
+        var morador = new Backend.models.Morador
+        {
+            Nome = "Carlos",
+            Idade = 40
+        };
+
+        await testContext.Context.Moradores.AddAsync(morador);
+        await testContext.Context.SaveChangesAsync();
+
+        var service = new MoradorServices(testContext.Context);
+        var resultado = await service.DeletarMorador(morador.Id);
+
+        if (!resultado)
+        {
+            throw new Exception("Era esperado que o metodo retornasse true ao deletar um morador existente.");
+        }
+
+        var moradorNoBanco = await testContext.Context.Moradores.FindAsync(morador.Id);
+
+        if (moradorNoBanco is not null)
+        {
+            throw new Exception("O morador ainda foi encontrado no banco depois da exclusao.");
+        }
+    }
+
+    public static async Task TesteDeletarMoradorInexistenteRetornaFalse()
+    {
+        await using var testContext = await TestContextFactory.CriarContextoAsync();
+        var service = new MoradorServices(testContext.Context);
+
+        var resultado = await service.DeletarMorador(999);
+
+        if (resultado)
+        {
+            throw new Exception("Era esperado que o metodo retornasse false ao tentar deletar um morador inexistente.");
+        }
+    }
 }

@@ -49,7 +49,27 @@ namespace Backend.services
                 throw new Exception ("Erro ao criar usuario",ex);
             }
             
-        } 
+        }
+        public async Task<bool> DeletarMorador(int id)
+        {
+            try
+            {
+                var morador = await _context.Moradores.FindAsync(id);
+
+                if(morador == null) 
+                    return false;
+                
+                _context.Moradores.Remove(morador);
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception ("Erro ao deletar o Morador",ex);
+            }
+            
+        }
         
     } 
     

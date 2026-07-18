@@ -5,6 +5,7 @@ namespace Backend.interfaces
     public interface IMoradorService
     {
         Task<MoradorResponseDto>CadastrarMoradoresAsync(CadastrarMoradorDto moradorDto);
+        Task<bool> DeletarMorador (int id);
 
     }
 }

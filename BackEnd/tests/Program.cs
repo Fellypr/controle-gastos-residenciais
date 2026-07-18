@@ -5,7 +5,9 @@ var falhas = 0;
 var testes = new List<(string Nome, Func<Task> Executar)>
 {
     ("TesteCadastroComSucesso", CadastrarMoradoresTests.TesteCadastroComSucesso),
-    ("TesteNaoPermiteNomeDuplicado", CadastrarMoradoresTests.TesteNaoPermiteNomeDuplicado)
+    ("TesteNaoPermiteNomeDuplicado", CadastrarMoradoresTests.TesteNaoPermiteNomeDuplicado),
+    ("TesteDeletarMoradorComSucesso", CadastrarMoradoresTests.TesteDeletarMoradorComSucesso),
+    ("TesteDeletarMoradorInexistenteRetornaFalse", CadastrarMoradoresTests.TesteDeletarMoradorInexistenteRetornaFalse)
 };
 
 foreach (var teste in testes)

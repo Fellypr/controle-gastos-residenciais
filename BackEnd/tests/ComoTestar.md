@@ -6,6 +6,8 @@ Oi. Eu reorganizei os testes para nao ficar tudo jogado na mesma pasta. A ideia 
 
 1. Se o morador for cadastrado certo, o metodo retorna os dados com `Id`, `Nome` e `Idade`.
 2. Se tentar cadastrar duas vezes o mesmo nome, o metodo gera erro.
+3. Se o morador existir, o metodo `DeletarMorador` retorna `true` e remove do banco.
+4. Se o morador nao existir, o metodo `DeletarMorador` retorna `false`.
 
 ## Como a pasta ficou organizada
 
@@ -30,6 +32,8 @@ Se estiver tudo certo, deve aparecer algo parecido com isso:
 ```text
 [OK] TesteCadastroComSucesso
 [OK] TesteNaoPermiteNomeDuplicado
+[OK] TesteDeletarMoradorComSucesso
+[OK] TesteDeletarMoradorInexistenteRetornaFalse
 
 Total de falhas: 0
 ```
