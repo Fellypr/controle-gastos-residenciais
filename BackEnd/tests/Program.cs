@@ -1,4 +1,5 @@
 using Tests.Morador;
+using Tests.Transacao;
 
 var falhas = 0;
 
@@ -7,7 +8,12 @@ var testes = new List<(string Nome, Func<Task> Executar)>
     ("TesteCadastroComSucesso", CadastrarMoradoresTests.TesteCadastroComSucesso),
     ("TesteNaoPermiteNomeDuplicado", CadastrarMoradoresTests.TesteNaoPermiteNomeDuplicado),
     ("TesteDeletarMoradorComSucesso", CadastrarMoradoresTests.TesteDeletarMoradorComSucesso),
-    ("TesteDeletarMoradorInexistenteRetornaFalse", CadastrarMoradoresTests.TesteDeletarMoradorInexistenteRetornaFalse)
+    ("TesteDeletarMoradorInexistenteRetornaFalse", CadastrarMoradoresTests.TesteDeletarMoradorInexistenteRetornaFalse),
+    ("TesteObterTodasAsyncRetornaTodasAsTransacoes", TransacaoServiceTests.TesteObterTodasAsyncRetornaTodasAsTransacoes),
+    ("TesteObterTodasAsyncFiltraPorTipo", TransacaoServiceTests.TesteObterTodasAsyncFiltraPorTipo),
+    ("TesteCriarAsyncSemMoradorRelacionadoLancaErro", TransacaoServiceTests.TesteCriarAsyncSemMoradorRelacionadoLancaErro),
+    ("TesteDeletarAsyncComSucesso", TransacaoServiceTests.TesteDeletarAsyncComSucesso),
+    ("TesteDeletarAsyncInexistenteRetornaFalse", TransacaoServiceTests.TesteDeletarAsyncInexistenteRetornaFalse)
 };
 
 foreach (var teste in testes)

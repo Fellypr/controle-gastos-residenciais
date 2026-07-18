@@ -8,11 +8,17 @@ Oi. Eu reorganizei os testes para nao ficar tudo jogado na mesma pasta. A ideia 
 2. Se tentar cadastrar duas vezes o mesmo nome, o metodo gera erro.
 3. Se o morador existir, o metodo `DeletarMorador` retorna `true` e remove do banco.
 4. Se o morador nao existir, o metodo `DeletarMorador` retorna `false`.
+5. Se existirem transacoes, o metodo `ObterTodasAsync` lista tudo.
+6. Se passar um tipo, o metodo `ObterTodasAsync` filtra por tipo.
+7. Se tentar criar transacao sem relacao valida, o metodo `CriarAsync` gera erro.
+8. Se a transacao existir, o metodo `DeletarAsync` retorna `true` e remove do banco.
+9. Se a transacao nao existir, o metodo `DeletarAsync` retorna `false`.
 
 ## Como a pasta ficou organizada
 
 - `tests/Program.cs`: so executa os testes
 - `tests/Morador/CadastrarMoradoresTests.cs`: testes da funcao `CadastrarMoradoresAsync`
+- `tests/Transacao/TransacaoServiceTests.cs`: testes das funcoes de transacao
 - `tests/Shared/TestContextFactory.cs`: parte compartilhada para criar o banco em memoria
 - `tests/SimpleTests.csproj`: projeto dos testes
 
@@ -34,6 +40,11 @@ Se estiver tudo certo, deve aparecer algo parecido com isso:
 [OK] TesteNaoPermiteNomeDuplicado
 [OK] TesteDeletarMoradorComSucesso
 [OK] TesteDeletarMoradorInexistenteRetornaFalse
+[OK] TesteObterTodasAsyncRetornaTodasAsTransacoes
+[OK] TesteObterTodasAsyncFiltraPorTipo
+[OK] TesteCriarAsyncSemMoradorRelacionadoLancaErro
+[OK] TesteDeletarAsyncComSucesso
+[OK] TesteDeletarAsyncInexistenteRetornaFalse
 
 Total de falhas: 0
 ```
