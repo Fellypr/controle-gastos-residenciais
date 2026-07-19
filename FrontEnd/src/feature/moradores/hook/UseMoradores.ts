@@ -14,6 +14,7 @@ export function useMoradores(){
     const [mensagem, setMensagem] = useState<string|null>(null);
     const [erro, setErro] = useState<string|null>(null);
 
+    // Quando o hook abre, ele já tenta carregar a lista de moradores.
     async function buscarMoradores() {
         try {
             setCarregando(true);
@@ -31,10 +32,12 @@ export function useMoradores(){
         buscarMoradores();
     }, []);
 
+    // Esse helper só limpa a mensagem pra não ficar texto antigo na tela.
     function limparMensagem() {
         setMensagem(null);
     }
 
+    // Aqui a gente valida o que foi digitado e manda o cadastro pra API.
     async function handleCadastrar(morador: CadastrarMoradorDto) {
         if (!morador.nome.trim()) {
             setErro("Informe o nome do morador.");
@@ -62,6 +65,7 @@ export function useMoradores(){
         }
     }
 
+    // Quando clica pra excluir, a ideia é remover da API e tirar da lista local também.
     async function handleExcluir(id: number) {
         try {
             setCarregando(true);

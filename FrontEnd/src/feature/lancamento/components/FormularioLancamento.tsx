@@ -1,9 +1,36 @@
+import AlertaSucesso from "../../../components/MensagemCard/AlertaSucesso";
+import type { FormularioLancamentoProps } from "../types/Transacoes";
 import "./FormularioLancamento.css";
 
-export function FormularioLancamento() {
+export function FormularioLancamento({
+  carregando = false,
+  descricao,
+  erro,
+  mensagemSucesso,
+  moradores,
+  moradorId,
+  onCadastrar,
+  onDescricaoChange,
+  onFecharMensagemSucesso,
+  onMoradorChange,
+  onTipoChange,
+  onValorChange,
+  tipo,
+  valor,
+}: FormularioLancamentoProps) {
   return (
-    <section className="lancamento-card">
+    <form className="lancamento-card" onSubmit={onCadastrar}>
       <h2 className="lancamento-titulo">Novo Lançamento</h2>
+
+      {mensagemSucesso && (
+        <AlertaSucesso
+          mensagem={mensagemSucesso}
+          titulo="Lancamento registrado"
+          onFechar={onFecharMensagemSucesso}
+        />
+      )}
+
+      {erro && <p className="lancamento-erro">{erro}</p>}
 
       <div className="campo">
         <label htmlFor="descricao">Descrição</label>
@@ -12,21 +39,46 @@ export function FormularioLancamento() {
           id="descricao"
           type="text"
           placeholder="Ex: Compras do mês"
-          readOnly
+          value={descricao}
+          onChange={(event) => onDescricaoChange(event.target.value)}
+          disabled={carregando}
         />
       </div>
 
       <div className="campo">
         <label htmlFor="valor">Valor</label>
 
-        <input id="valor" type="text" placeholder="Ex: R$ 150,00" readOnly />
+        <input
+          id="valor"
+          type="number"
+          min="0.01"
+          step="0.01"
+          placeholder="Ex: 150.00"
+          value={valor}
+          onChange={(event) => onValorChange(event.target.value)}
+          disabled={carregando}
+        />
       </div>
 
       <div className="campo">
-        <span className="campo-label">Quem realizou</span>
+        <label className="campo-label" htmlFor="morador">
+          Quem realizou
+        </label>
 
         <div className="select-estatico">
-          <span>Ana Souza (25 anos)</span>
+          <select
+            id="morador"
+            value={moradorId}
+            onChange={(event) => onMoradorChange(event.target.value)}
+            disabled={carregando}
+          >
+            <option value="">Selecione um morador</option>
+            {moradores.map((morador) => (
+              <option key={morador.id} value={morador.id}>
+                {morador.nome} ({morador.idade} anos)
+              </option>
+            ))}
+          </select>
           <span className="seta">⌄</span>
         </div>
       </div>
@@ -35,20 +87,30 @@ export function FormularioLancamento() {
         <span className="campo-label">Tipo</span>
 
         <div className="tipos">
-          <div className="tipo tipo-ativo">
+          <button
+            className={`tipo ${tipo === "Receita" ? "tipo-ativo" : ""}`}
+            type="button"
+            onClick={() => onTipoChange("Receita")}
+            disabled={carregando}
+          >
             <span className="radio radio-ativo" />
             <span>Receita</span>
-          </div>
+          </button>
 
-          <div className="tipo">
-            <span className="radio" />
+          <button
+            className={`tipo ${tipo === "Despesa" ? "tipo-ativo" : ""}`}
+            type="button"
+            onClick={() => onTipoChange("Despesa")}
+            disabled={carregando}
+          >
+            <span className={`radio ${tipo === "Despesa" ? "radio-ativo" : ""}`} />
             <span>Despesa</span>
-          </div>
+          </button>
         </div>
       </div>
-      <button className="botao-cadastrar" type="button">
-        Cadastrar
+      <button className="botao-cadastrar" type="submit" disabled={carregando}>
+        {carregando ? "Salvando..." : "Cadastrar"}
       </button>
-    </section>
+    </form>
   );
 }
