@@ -80,7 +80,7 @@ Controle_de_Gastos_Residenciais/
 - Permite cadastrar moradores com `nome` e `idade`.
 - Lista todos os moradores cadastrados.
 - Impede cadastro duplicado de moradores com o mesmo nome.
-- Permite excluir moradores existentes.
+- Permite excluir moradores existentes (com deleção em cascata automática de todas as suas transações vinculadas).
 
 ### Lançamentos financeiros
 
@@ -126,13 +126,13 @@ cd Controle_de_Gastos_Residenciais
 
 ## 🔧 Rodando o BackEnd
 
-### 1. Acessar a pasta da API
+### 2. Acessar a pasta da API
 
 ```bash
 cd BackEnd
 ```
 
-### 2. Restaurar as dependências
+### 3. Restaurar as dependências
 
 ```bash
 dotnet restore
