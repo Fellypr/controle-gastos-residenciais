@@ -28,6 +28,63 @@
   /* Destaques / Botões / Menus */
   --color-accent: #2563EB;      /* Azul Principal */
   --color-accent-dark: #1E3A8A; /* Azul Escuro (Ótimo para Hover ou Menus) */
+
+  /* Componentes / tema */
+  --color-border-soft: #E2E8F0;
+  --color-surface-elevated: rgba(255, 255, 255, 0.78);
+  --color-surface-muted: #F1F5F9;
+  --color-surface-glow: rgba(37, 99, 235, 0.14);
+  --color-shadow-soft: rgba(15, 23, 42, 0.08);
+  --color-shadow-strong: rgba(15, 23, 42, 0.18);
+  --color-theme-toggle-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.92));
+  --color-theme-toggle-active: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.96));
+  --color-theme-light-active: #B45309;
+  --color-theme-dark-active: #1D4ED8;
+  --color-navbar-bg: rgba(255, 255, 255, 0.88);
+  --color-input-bg: #FFFFFF;
+  --color-input-border: #CBD5E1;
+  --color-table-header-bg: #F8FAFC;
+  --color-overlay: rgba(15, 23, 42, 0.5);
+  --color-danger-soft: #FEF2F2;
+  --color-danger-soft-strong: #FEE2E2;
+  --color-danger-text: #DC2626;
+  --color-danger-text-strong: #B91C1C;
+  --color-success-soft: #D1FAE5;
+  --color-success-soft-strong: #DCFCE7;
+  --color-success-text: #166534;
+  --color-warning-text: #B45309;
+}
+
+:root.tema-escuro {
+  --color-bg-screen: #020617;
+  --color-bg-card: #0F172A;
+  --color-text-primary: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-accent: #60A5FA;
+  --color-accent-dark: #BFDBFE;
+  --color-border-soft: rgba(148, 163, 184, 0.18);
+  --color-surface-elevated: rgba(15, 23, 42, 0.84);
+  --color-surface-muted: #111827;
+  --color-surface-glow: rgba(96, 165, 250, 0.2);
+  --color-shadow-soft: rgba(2, 6, 23, 0.45);
+  --color-shadow-strong: rgba(2, 6, 23, 0.6);
+  --color-theme-toggle-bg: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.92));
+  --color-theme-toggle-active: linear-gradient(135deg, rgba(30, 41, 59, 0.96), rgba(37, 99, 235, 0.2));
+  --color-theme-light-active: #FBBF24;
+  --color-theme-dark-active: #93C5FD;
+  --color-navbar-bg: rgba(2, 6, 23, 0.82);
+  --color-input-bg: #111827;
+  --color-input-border: rgba(148, 163, 184, 0.22);
+  --color-table-header-bg: #0B1220;
+  --color-overlay: rgba(2, 6, 23, 0.72);
+  --color-danger-soft: rgba(127, 29, 29, 0.22);
+  --color-danger-soft-strong: rgba(153, 27, 27, 0.34);
+  --color-danger-text: #FCA5A5;
+  --color-danger-text-strong: #FECACA;
+  --color-success-soft: rgba(6, 95, 70, 0.24);
+  --color-success-soft-strong: rgba(22, 163, 74, 0.2);
+  --color-success-text: #86EFAC;
+  --color-warning-text: #FCD34D;
 }
 
 *, *::before, *::after {
@@ -48,7 +105,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
 }
-
-
 

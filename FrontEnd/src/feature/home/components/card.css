@@ -1,19 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-:root {
-  --summary-border: #e2e8f0;
-  --summary-secondary-text: #64748b;
-
-  --summary-income: #16a34a;
-  --summary-income-background: #f0fdf4;
-
-  --summary-expense: #dc2626;
-  --summary-expense-background: #fef2f2;
-
-  --summary-balance: #2563eb;
-  --summary-balance-background: #eff6ff;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -37,10 +23,15 @@
   align-items: flex-start;
   gap: 18px;
 
-  background-color: #ffffff;
-  border: 1px solid var(--summary-border);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-soft);
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 12px 32px var(--color-shadow-soft);
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
 }
 
 .summary-card__header {
@@ -75,7 +66,7 @@
 .summary-card__title {
   margin: 0;
 
-  color: var(--summary-secondary-text);
+  color: var(--color-text-secondary);
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -91,32 +82,32 @@
 
 
 .summary-card--income .summary-card__icon {
-  color: var(--summary-income);
-  background-color: var(--summary-income-background);
+  color: var(--color-success);
+  background-color: var(--color-success-soft-strong);
 }
 
 .summary-card--income .summary-card__value {
-  color: var(--summary-income);
+  color: var(--color-success);
 }
 
 
 .summary-card--expense .summary-card__icon {
-  color: var(--summary-expense);
-  background-color: var(--summary-expense-background);
+  color: var(--color-danger-text);
+  background-color: var(--color-danger-soft);
 }
 
 .summary-card--expense .summary-card__value {
-  color: var(--summary-expense);
+  color: var(--color-danger-text);
 }
 
 
 .summary-card--balance .summary-card__icon {
-  color: var(--summary-balance);
-  background-color: var(--summary-balance-background);
+  color: var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent) 16%, transparent);
 }
 
 .summary-card--balance .summary-card__value {
-  color: var(--summary-balance);
+  color: var(--color-accent);
 }
 
 

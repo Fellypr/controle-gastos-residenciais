@@ -17,16 +17,16 @@
 
   font-family: "Inter", sans-serif;
 
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-soft);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 12px 32px var(--color-shadow-soft);
 }
 
 .cadastro-morador__titulo {
   margin: 0;
 
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
@@ -45,7 +45,7 @@
 }
 
 .cadastro-morador__campo label {
-  color: #64748b;
+  color: var(--color-text-secondary);
   font-size: 12px;
   font-weight: 600;
 }
@@ -55,12 +55,12 @@
   height: 40px;
   padding: 0 12px;
 
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-family: inherit;
   font-size: 14px;
 
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
   border-radius: 6px;
   outline: none;
 
@@ -70,7 +70,7 @@
 }
 
 .cadastro-morador__campo input::placeholder {
-  color: #94a3b8;
+  color: var(--color-text-secondary);
 }
 
 .cadastro-morador__campo input:focus {

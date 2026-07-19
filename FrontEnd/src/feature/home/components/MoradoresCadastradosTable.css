@@ -12,7 +12,7 @@
 
 .resumo__titulo {
   margin: 0 10px 16px;
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-size: 20px;
   font-weight: 700;
 }
@@ -23,17 +23,17 @@
 
   overflow-x: auto;
 
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-soft);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 12px 32px var(--color-shadow-soft);
 }
 
 .resumo__tabela {
   width: 100%;
   border-collapse: collapse;
 
-  color: #475569;
+  color: var(--color-text-secondary);
   font-size: 14px;
 }
 
@@ -41,11 +41,11 @@
 .resumo__tabela td {
   height: 52px;
   padding: 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 .resumo__tabela th {
-  color: #334155;
+  color: var(--color-text-primary);
   font-weight: 600;
   text-align: left;
 }
@@ -60,12 +60,12 @@
 }
 
 .resumo__tabela tfoot {
-  background-color: #f8fafc;
+  background-color: var(--color-table-header-bg);
 }
 
 .resumo__tabela tfoot td {
   height: 60px;
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-weight: 700;
   border-bottom: none;
 }
@@ -86,12 +86,12 @@
 
 .saldo--positivo,
 .resumo__tabela tfoot .saldo--positivo {
-  color: #16a34a;
+  color: var(--color-success);
 }
 
 .saldo--negativo,
 .resumo__tabela tfoot .saldo--negativo {
-  color: #dc2626;
+  color: var(--color-danger-text);
 }
 
 @media (max-width: 700px) {

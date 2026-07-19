@@ -3,10 +3,10 @@
   max-width: 700px;
   padding: 24px;
   margin-bottom: 8.7rem;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-soft);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 12px 32px var(--color-shadow-soft);
   font-family: Arial, sans-serif;
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@
 .historico-card h2 {
   margin: 0 0 24px;
 
-  color: #0f172a;
+  color: var(--color-text-primary);
   font-size: 18px;
   font-weight: 700;
 }
@@ -31,8 +31,8 @@
   align-items: center;
   gap: 10px;
 
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
   border-radius: 6px;
   box-sizing: border-box;
 }
@@ -48,7 +48,7 @@
   height: 100%;
 
   fill: none;
-  stroke: #64748b;
+  stroke: var(--color-text-secondary);
   stroke-width: 1.8;
   stroke-linecap: round;
 }
@@ -57,7 +57,7 @@
   width: 100%;
   height: 100%;
 
-  color: #334155;
+  color: var(--color-text-primary);
   background-color: transparent;
 
   border: none;
@@ -68,7 +68,7 @@
 }
 
 .campo-busca input::placeholder {
-  color: #94a3b8;
+  color: var(--color-text-secondary);
 }
 
 .campo-busca input::-webkit-search-cancel-button {
@@ -81,7 +81,7 @@
   width: 100%;
   overflow-x: auto;
 
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border-soft);
   border-radius: 6px;
 }
 
@@ -97,8 +97,8 @@
   height: 44px;
   padding: 0 14px;
 
-  color: #64748b;
-  background-color: #f8fafc;
+  color: var(--color-text-secondary);
+  background-color: var(--color-table-header-bg);
 
   font-size: 12px;
   font-weight: 600;
@@ -129,9 +129,9 @@
   height: 64px;
   padding: 0 14px;
 
-  color: #334155;
+  color: var(--color-text-primary);
   font-size: 14px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .descricao,
@@ -145,7 +145,7 @@
 }
 
 .morador {
-  color: #64748b;
+  color: var(--color-text-secondary);
 }
 
 /* Tags */
@@ -165,13 +165,13 @@
 }
 
 .tag-receita {
-  color: #065f46;
-  background-color: #d1fae5;
+  color: var(--color-success-text);
+  background-color: var(--color-success-soft);
 }
 
 .tag-despesa {
-  color: #991b1b;
-  background-color: #fee2e2;
+  color: var(--color-danger-text-strong);
+  background-color: var(--color-danger-soft-strong);
 }
 
 /* Botão de excluir */
@@ -191,8 +191,8 @@
   align-items: center;
   justify-content: center;
 
-  color: #dc2626;
-  background-color: #fef2f2;
+  color: var(--color-danger-text);
+  background-color: var(--color-danger-soft);
 
   border: none;
   border-radius: 6px;
@@ -215,7 +215,7 @@
 }
 
 .botao-excluir:hover {
-  background-color: #fee2e2;
+  background-color: var(--color-danger-soft-strong);
   transform: scale(1.05);
 }
 
@@ -226,7 +226,7 @@
 }
 
 .botao-excluir:focus-visible {
-  outline: 2px solid #dc2626;
+  outline: 2px solid var(--color-danger-text);
   outline-offset: 2px;
 }
 
