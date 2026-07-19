@@ -120,7 +120,7 @@ dotnet ef --version
 ### 1. Clonar o repositório
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/Fellypr/controle-gastos-residenciais.git
 cd Controle_de_Gastos_Residenciais
 ```
 
@@ -138,19 +138,6 @@ cd BackEnd
 dotnet restore
 ```
 
-### 3. Aplicar as migrations no banco SQLite
-
-Esse projeto usa a connection string:
-
-```text
-Data Source=casafin.db
-```
-
-Para criar ou atualizar o banco local com a estrutura atual:
-
-```bash
-dotnet ef database update
-```
 
 ### 4. Rodar a API
 
@@ -168,10 +155,6 @@ O frontend atualmente consome a API por:
 ```text
 http://localhost:5116
 ```
-
-### 5. Opcional: acessar a documentação OpenAPI no ambiente de desenvolvimento
-
-Com a API em execução, a especificação OpenAPI fica disponível no ambiente de desenvolvimento pela rota mapeada pelo backend.
 
 ## 💻 Rodando o FrontEnd
 
@@ -219,4 +202,4 @@ http://localhost:5173
 
 ## 🧪 Observação sobre testes
 
-O projeto possui uma pasta `BackEnd/tests` com testes simples voltados às regras principais de moradores e transações. Se quiser evoluir a aplicação, vale manter esses testes atualizados junto com as regras de negócio.
+O projeto possui uma pasta `BackEnd/tests` com testes simples voltados às regras principais de moradores e transações.
