@@ -19,6 +19,7 @@ namespace Backend.controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TransacaoResponseDto>>> ObterTodas([FromQuery] string? tipo = null)
         {
+            // Deixei o filtro opcional na própria action porque assim a mesma rota atende listagem geral e filtrada sem duplicar endpoint.
             var transacoes = await _transacaoService.ObterTodasAsync(tipo);
             return Ok(transacoes);
         }
@@ -29,10 +30,12 @@ namespace Backend.controllers
             try
             {
                 var novaTransacao = await _transacaoService.CriarTransacoesAsync(dto);
+                // Mantive CreatedAtAction pelo mesmo motivo do cadastro de morador: o retorno já comunica que a criação deu certo de forma padrão.
                 return CreatedAtAction(nameof(ObterTodas), new { id = novaTransacao.Id }, novaTransacao);
             }
             catch (MoradorNotFoundException ex)
             {
+                // Separei essa exceção porque ela representa um vínculo inválido, então 404 faz mais sentido para quem consome a API.
                 return NotFound(new { mensagem = ex.Message });
             }
             catch (DomainException ex)
@@ -50,6 +53,7 @@ namespace Backend.controllers
 
                 if (!deletado)
                 {
+                    // Esse retorno evita fingir que apagou algo quando o registro já não estava mais no banco.
                     return NotFound(new { mensagem = "Transacao nao encontrada." });
                 }
 

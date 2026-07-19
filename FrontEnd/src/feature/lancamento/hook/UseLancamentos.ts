@@ -21,18 +21,15 @@ export function useLancamentos() {
   const [tipo, setTipo] = useState<TipoTransacao>("Receita");
   const [moradorId, setMoradorId] = useState("");
   const [termoBusca, setTermoBusca] = useState("");
-  const [carregando, setCarregando] = useState(false);
+  const [carregando, setCarregando] = useState(true);
   const [mensagem, setMensagem] = useState<string | null>(null);
   const [erro, setErro] = useState<string | null>(null);
-  const [alertaDeIdade,setAlertaDeIdade] = useState<string>("");
+  const [alertaDeIdade, setAlertaDeIdade] = useState<string>("");
 
   // Pego os dados iniciais quando o hook é montado.
   // Basicamente faço duas chamadas ao backend em paralelo e guardo o resultado no estado.
   async function carregarDados() {
     try {
-      setCarregando(true);
-      setErro(null);
-
       const [listaTransacoes, listaMoradores] = await Promise.all([
         obterTodasAsTransacoes(),
         obterTodosOsMoradores(),
@@ -52,7 +49,11 @@ export function useLancamentos() {
   }
 
   useEffect(() => {
-    carregarDados();
+    const timer = setTimeout(() => {
+      carregarDados();
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   function limparMensagem() {
@@ -66,22 +67,23 @@ export function useLancamentos() {
     setValor("");
     setTipo("Receita");
     setMoradorId("");
-    setAlertaDeIdade("")
+    setAlertaDeIdade("");
   }
 
   // Quando o usuário escolhe alguém, eu vejo se essa pessoa é menor de idade.
   // Se for, já ajusto o tipo da transação pra despesa e aviso no formulário.
   function handleMoradorChange(id: string) {
-  setMoradorId(id);
-  const morador = moradores.find((item) => item.id === Number(id));
-  if (morador && morador.idade < 18) {
-    setTipo("Despesa");
-    setAlertaDeIdade(`⚠️ ${morador.nome} é menor de idade. Por regras do sistema, apenas despesas podem ser cadastradas para ele.`)
-  }else
-  {
-    setAlertaDeIdade("")
+    setMoradorId(id);
+    const morador = moradores.find((item) => item.id === Number(id));
+    if (morador && morador.idade < 18) {
+      setTipo("Despesa");
+      setAlertaDeIdade(
+        `⚠️ ${morador.nome} é menor de idade. Por regras do sistema, apenas despesas podem ser cadastradas para ele.`,
+      );
+    } else {
+      setAlertaDeIdade("");
+    }
   }
-}
 
   function converterValorParaNumero(valorDigitado: string) {
     return Number(valorDigitado.replace(",", "."));
@@ -117,11 +119,9 @@ export function useLancamentos() {
       setMensagem("Transação cadastrado com sucesso.");
     } catch (error) {
       setErro(
-        error instanceof Error
-          ? error.message
-          : "Erro ao cadastrar transacao.",
+        error instanceof Error ? error.message : "Erro ao cadastrar transacao.",
       );
-      console.log("erro aqui",error)
+      console.log("erro aqui", error);
     } finally {
       setCarregando(false);
     }
@@ -142,9 +142,7 @@ export function useLancamentos() {
       );
     } catch (error) {
       setErro(
-        error instanceof Error
-          ? error.message
-          : "Erro ao excluir transacao.",
+        error instanceof Error ? error.message : "Erro ao excluir transacao.",
       );
     } finally {
       setCarregando(false);

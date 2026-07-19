@@ -24,6 +24,7 @@ export function useHomeDashboard() {
         setCarregando(true);
         setErro(null);
 
+        // Preferi buscar tudo em paralelo porque a home depende dos dois blocos, então assim a tela não espera uma chamada terminar para começar a outra.
         const [listaMoradores, listaTransacoes] = await Promise.all([
           obterTodosOsMoradores(),
           obterTodasAsTransacoes(),
@@ -55,6 +56,7 @@ export function useHomeDashboard() {
 
   const moradoresResumo: ResumoMorador[] = moradores
     .map((morador) => {
+      // Aqui eu recalculei por morador no próprio map porque o objetivo ficou mais fácil de ler: montar o resumo completo de cada pessoa de uma vez.
       const receitas = transacoes.reduce((total, transacao) => {
         return transacao.moradorId === morador.id && transacao.tipo === "Receita"
           ? total + transacao.valor
@@ -75,6 +77,7 @@ export function useHomeDashboard() {
         despesas,
       };
     })
+    // Deixei a ordenação no final para a regra valer já em cima do resumo pronto, sem misturar com a etapa de cálculo.
     .sort((moradorA, moradorB) => moradorA.nome.localeCompare(moradorB.nome));
 
   return {

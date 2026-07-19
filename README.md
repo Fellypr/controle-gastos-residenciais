@@ -1,75 +1,222 @@
-# React + TypeScript + Vite
+# Controle de Gastos Residenciais
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação full stack para cadastro de moradores e controle de receitas e despesas de uma residência. O projeto foi organizado com separação entre API, regras de negócio e interface web, permitindo consultar moradores, registrar lançamentos financeiros e visualizar um resumo consolidado na dashboard inicial.
 
-Currently, two official plugins are available:
+## 🏗️ Arquitetura e Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Visão geral
 
-## React Compiler
+O projeto está dividido em duas aplicações principais:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `BackEnd`: API REST responsável por regras de negócio, persistência e exposição dos endpoints.
+- `FrontEnd`: aplicação web responsável pela navegação, formulários, listagens e dashboard.
 
-## Expanding the ESLint configuration
+### BackEnd
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `.NET 10`
+- `ASP.NET Core Web API`
+- `Entity Framework Core`
+- `SQLite`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### FrontEnd
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `React`
+- `TypeScript`
+- `Fetch API` para consumo da API
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Arquitetura aplicada
 
+- No `BackEnd`, o fluxo principal segue a ideia: `Controller -> Service -> DbContext`.
+- Os `controllers` recebem a requisição HTTP e devolvem as respostas da API.
+- Os `services` concentram as regras de negócio, como validações e montagem dos DTOs.
+- O `AppDbContext` faz a comunicação com o banco SQLite via Entity Framework Core.
+- No `FrontEnd`, a organização é por feature, com separação entre `components`, `hook`, `services` e `types`.
+
+## 📁 Estrutura de Pastas
+
+Estrutura simplificada do projeto:
+
+```text
+Controle_de_Gastos_Residenciais/
+├── BackEnd/
+│   ├── controllers/
+│   ├── data/
+│   ├── dtos/
+│   ├── exceptions/
+│   ├── interfaces/
+│   ├── Migrations/
+│   ├── models/
+│   ├── services/
+│   ├── tests/
+│   ├── Program.cs
+│   └── BackEnd.csproj
+├── FrontEnd/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── feature/
+│   │   │   ├── home/
+│   │   │   ├── lancamento/
+│   │   │   └── moradores/
+│   │   ├── pages/
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ✨ Funcionalidades Principais
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Dashboard inicial
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Exibe o resumo financeiro geral da casa.
+- Calcula total de `receitas` e `despesas` com base nas transações cadastradas.
+- Monta um resumo por morador, mostrando nome, idade, total de receitas e total de despesas.
+- Exibe estado vazio quando ainda não existem moradores cadastrados.
 
+### Cadastro de moradores
+
+- Permite cadastrar moradores com `nome` e `idade`.
+- Lista todos os moradores cadastrados.
+- Impede cadastro duplicado de moradores com o mesmo nome.
+- Permite excluir moradores existentes.
+
+### Lançamentos financeiros
+
+- Permite criar lançamentos com descrição, valor, tipo e morador relacionado.
+- Trabalha com os tipos de transação `Receita` e `Despesa`.
+- Lista o histórico de transações registradas.
+- Permite excluir transações.
+- Possui filtro/busca no histórico no frontend.
+
+### Regras de negócio importantes
+
+- Uma transação só pode ser criada se o morador relacionado existir.
+- O backend bloqueia cadastro de `receita` para morador menor de idade.
+- A API devolve mensagens de erro tratadas para facilitar o consumo pelo frontend.
+
+## ✅ Pré-requisitos
+
+Antes de rodar o projeto localmente, tenha instalado:
+
+- `.NET SDK 10`
+- `Node.js` versão `20` ou superior
+- `npm`
+- Ferramenta global do Entity Framework Core:
+
+```bash
+dotnet tool install --global dotnet-ef
 ```
+
+Se você já tiver o `dotnet-ef` instalado, pode conferir com:
+
+```bash
+dotnet ef --version
+```
+
+## 🚀 Como Clonar e Rodar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+cd Controle_de_Gastos_Residenciais
+```
+
+## 🔧 Rodando o BackEnd
+
+### 1. Acessar a pasta da API
+
+```bash
+cd BackEnd
+```
+
+### 2. Restaurar as dependências
+
+```bash
+dotnet restore
+```
+
+### 3. Aplicar as migrations no banco SQLite
+
+Esse projeto usa a connection string:
+
+```text
+Data Source=casafin.db
+```
+
+Para criar ou atualizar o banco local com a estrutura atual:
+
+```bash
+dotnet ef database update
+```
+
+### 4. Rodar a API
+
+```bash
+dotnet run
+```
+
+Por padrão, a aplicação sobe em:
+
+- `http://localhost:5116`
+- `https://localhost:7035`
+
+O frontend atualmente consome a API por:
+
+```text
+http://localhost:5116
+```
+
+### 5. Opcional: acessar a documentação OpenAPI no ambiente de desenvolvimento
+
+Com a API em execução, a especificação OpenAPI fica disponível no ambiente de desenvolvimento pela rota mapeada pelo backend.
+
+## 💻 Rodando o FrontEnd
+
+### 1. Voltar para a raiz do projeto
+
+Se você ainda estiver dentro de `BackEnd/`:
+
+```bash
+cd ..
+```
+
+### 2. Entrar na pasta do frontend
+
+```bash
+cd FrontEnd
+```
+
+### 3. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 4. Rodar o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+### 5. Abrir no navegador
+
+O Vite vai mostrar no terminal a URL local do projeto, normalmente algo como:
+
+```text
+http://localhost:5173
+```
+
+## 📌 Fluxo recomendado para rodar localmente
+
+1. Suba primeiro o `BackEnd` com `dotnet run`.
+2. Depois suba o `FrontEnd` com `npm run dev`.
+3. Acesse a aplicação no navegador.
+4. Cadastre moradores.
+5. Depois registre receitas e despesas para visualizar a dashboard preenchida.
+
+## 🧪 Observação sobre testes
+
+O projeto possui uma pasta `BackEnd/tests` com testes simples voltados às regras principais de moradores e transações. Se quiser evoluir a aplicação, vale manter esses testes atualizados junto com as regras de negócio.

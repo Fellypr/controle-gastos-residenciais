@@ -17,7 +17,6 @@ export function useMoradores(){
     // Quando o hook abre, ele já tenta carregar a lista de moradores.
     async function buscarMoradores() {
         try {
-            setCarregando(true);
             setErro(null);
             const resposta = await obterTodosOsMoradores();
             setMoradores(resposta);
@@ -29,7 +28,10 @@ export function useMoradores(){
     }
 
     useEffect(() => {
-        buscarMoradores();
+        const time = setTimeout(() => {
+            buscarMoradores();
+        },0)
+        return () => clearTimeout(time)
     }, []);
 
     // Esse helper só limpa a mensagem pra não ficar texto antigo na tela.
