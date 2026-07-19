@@ -75,7 +75,7 @@ export function FormularioLancamento({
           >
             <option value="">Selecione um morador</option>
             {moradores.map((morador) => (
-              <option key={morador.id} value={morador.id}>
+              <option key={morador.id} value={morador.id} className="select-morador">
                 {morador.nome} ({morador.idade} anos)
               </option>
             ))}

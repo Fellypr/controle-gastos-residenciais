@@ -1,4 +1,5 @@
 using Backend.dtos;
+using Backend.exceptions;
 using Backend.services;
 using Tests.Shared;
 
@@ -53,21 +54,11 @@ public static class CadastrarMoradoresTests
             await service.CadastrarMoradoresAsync(dto);
             throw new Exception("Era esperado um erro ao cadastrar um nome duplicado.");
         }
-        catch (Exception ex)
+        catch (DuplicateMoradorException ex)
         {
-            if (ex.Message != "Erro ao criar usuario")
+            if (!ex.Message.Contains("já está cadastrado", StringComparison.OrdinalIgnoreCase))
             {
-                throw new Exception("A mensagem externa da excecao nao foi a esperada.");
-            }
-
-            if (ex.InnerException is null)
-            {
-                throw new Exception("Era esperado que a excecao original viesse em InnerException.");
-            }
-
-            if (!ex.InnerException.Message.Contains("cadastrado", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new Exception("A mensagem interna nao explicou que o nome ja existe.");
+                throw new Exception("A mensagem nao explicou que o nome ja existe.");
             }
         }
     }

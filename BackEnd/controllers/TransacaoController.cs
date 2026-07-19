@@ -1,4 +1,5 @@
 using Backend.dtos;
+using Backend.exceptions;
 using Backend.interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,18 +29,15 @@ namespace Backend.controllers
             try
             {
                 var novaTransacao = await _transacaoService.CriarTransacoesAsync(dto);
-                return Ok(novaTransacao);
+                return CreatedAtAction(nameof(ObterTodas), new { id = novaTransacao.Id }, novaTransacao);
             }
-            catch (Exception ex)
+            catch (MoradorNotFoundException ex)
             {
-                var mensagem = ex.InnerException?.Message ?? ex.Message;
-
-                if (mensagem.Contains("Morador não encontrado", StringComparison.OrdinalIgnoreCase))
-                {
-                    return NotFound(new { mensagem });
-                }
-
-                return BadRequest(new { mensagem });
+                return NotFound(new { mensagem = ex.Message });
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
 
@@ -57,10 +55,9 @@ namespace Backend.controllers
 
                 return Ok(new { mensagem = "Transacao deletada com sucesso." });
             }
-            catch (Exception ex)
+            catch (DomainException ex)
             {
-                var mensagem = ex.InnerException?.Message ?? ex.Message;
-                return BadRequest(new { mensagem });
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
     }

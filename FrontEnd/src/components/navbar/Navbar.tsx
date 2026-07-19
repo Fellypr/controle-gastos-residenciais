@@ -32,7 +32,7 @@ export default function Navbar({ activePage = "inicio" }) {
 
   return (
     <header className="navbar">
-      <a href="/" className="navbar__logo" aria-label="CasaFin - Início">
+      <Link to={"/"} className="navbar__logo" aria-label="CasaFin - Início">
         <span className="navbar__logo-icon">
           <svg
             viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ export default function Navbar({ activePage = "inicio" }) {
         </span>
 
         <span className="navbar__brand">CasaFin</span>
-      </a>
+      </Link>
 
       <nav className="navbar__menu" aria-label="Menu principal">
         {links.map((link) => {

@@ -9,7 +9,6 @@ export default function CadastraMoradores() {
     idade,
     carregando,
     mensagem,
-    erro,
     setNome,
     setIdade,
     handleCadastrar,
@@ -37,7 +36,6 @@ export default function CadastraMoradores() {
         onExcluir={handleExcluir}
       />
     </div>
-    {erro && <p>{erro}</p>}
     </>
   );
 }

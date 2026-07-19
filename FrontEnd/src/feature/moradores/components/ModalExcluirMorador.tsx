@@ -41,7 +41,7 @@ function ModalExcluirMorador({
           </button>
 
           <button
-            className="botao-excluir"
+            className="botao-excluir-morador"
             type="button"
             onClick={onConfirmar}
             disabled={carregando}

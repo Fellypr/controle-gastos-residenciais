@@ -87,10 +87,9 @@
   background-color: var(--color-table-header-bg);
 }
 
-.botao-excluir {
+.botao-excluir-morador {
   width: 168px;
-
-  color: #ffffff;
+  color: #fff5f5;
   background-color: var(--color-danger-text);
 }
 

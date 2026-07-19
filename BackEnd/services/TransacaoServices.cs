@@ -2,6 +2,7 @@ using Backend.dtos;
 using Backend.interfaces;
 using Backend.data;
 using Backend.models;
+using Backend.exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.services
@@ -43,18 +44,16 @@ namespace Backend.services
         // Cria a transação e valida se o morador realmente existe antes de salvar.
         public async Task<TransacaoResponseDto> CriarTransacoesAsync(TransacaoCreateDto dto)
         {
-
             var morador = await _context.Moradores.FindAsync(dto.MoradorId);
 
-            if(morador == null)
+            if (morador == null)
             {
-                throw new Exception("Morador não encontrado");
-                
+                throw new MoradorNotFoundException(dto.MoradorId);
             }
+
             if (dto.Tipo == "Receita" && morador.Idade < 18)
             {
-                throw new InvalidOperationException ($"Menores de 18 anos só podem registrar despesas.");
-                
+                throw new MenorDeIdadeReceitaException();
             }
 
             var novaTransacao = new Transacao
@@ -64,8 +63,6 @@ namespace Backend.services
                 Tipo = dto.Tipo,
                 MoradorId = dto.MoradorId
             };
-
-            
 
             await _context.Trasacoes.AddAsync(novaTransacao);
             await _context.SaveChangesAsync();

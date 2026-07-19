@@ -1,4 +1,5 @@
 using Backend.dtos;
+using Backend.exceptions;
 using Backend.services;
 using Tests.Shared;
 
@@ -108,12 +109,12 @@ public static class TransacaoServiceTests
 
         try
         {
-            await service.CriarAsync(dto);
+            await service.CriarTransacoesAsync(dto);
             throw new Exception("Era esperado um erro ao criar transacao sem morador relacionado.");
         }
-        catch (Exception ex)
+        catch (MoradorNotFoundException ex)
         {
-            if (!ex.Message.Contains("Morador não encontrado.", StringComparison.OrdinalIgnoreCase))
+            if (!ex.Message.Contains("não encontrado", StringComparison.OrdinalIgnoreCase))
             {
                 throw new Exception("A mensagem de erro nao foi a esperada para morador nao encontrado.");
             }

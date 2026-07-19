@@ -1,4 +1,5 @@
 using Backend.dtos;
+using Backend.exceptions;
 using Backend.interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,18 +29,15 @@ namespace Backend.controllers
             try
             {
                 var moradorCadastrado = await _moradorService.CadastrarMoradoresAsync(moradorDto);
-                return Ok(moradorCadastrado);
+                return CreatedAtAction(nameof(ObterTodosOsMoradores), new { id = moradorCadastrado.Id }, moradorCadastrado);
             }
-            catch (Exception ex)
+            catch (DuplicateMoradorException ex)
             {
-                var mensagem = ex.InnerException?.Message ?? ex.Message;
-
-                if (mensagem.Contains("cadastrado", StringComparison.OrdinalIgnoreCase))
-                {
-                    return Conflict(new { mensagem });
-                }
-
-                return BadRequest(new { mensagem });
+                return Conflict(new { mensagem = ex.Message });
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
 
@@ -57,10 +55,9 @@ namespace Backend.controllers
 
                 return Ok(new { mensagem = "Morador deletado com sucesso." });
             }
-            catch (Exception ex)
+            catch (DomainException ex)
             {
-                var mensagem = ex.InnerException?.Message ?? ex.Message;
-                return BadRequest(new { mensagem });
+                return BadRequest(new { mensagem = ex.Message });
             }
         }
     }

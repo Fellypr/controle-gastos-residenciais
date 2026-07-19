@@ -123,6 +123,9 @@
   background-color: color-mix(in srgb, var(--color-accent) 12%, var(--color-input-bg));
   border-color: var(--color-accent);
 }
+.select-morador{
+  background-color: var(--color-input-bg);
+}
 
 .radio {
   width: 16px;
