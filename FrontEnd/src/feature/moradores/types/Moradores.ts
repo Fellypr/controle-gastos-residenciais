@@ -18,6 +18,7 @@ export interface CadastrarMoradorProps {
   onFecharMensagemSucesso?: () => void;
   nome: string;
   idade: string;
+  erro?: string | null;
   mensagemSucesso?: string | null;
   carregando?: boolean;
   onNomeChange: (nome: string) => void;

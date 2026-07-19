@@ -32,6 +32,13 @@
   line-height: 22px;
 }
 
+.cadastro-morador__erro {
+  margin: 0;
+  color: var(--color-danger-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .cadastro-morador__campo {
   width: 100%;
 

@@ -9,6 +9,7 @@ export default function CadastraMoradores() {
     idade,
     carregando,
     mensagem,
+    erro,
     setNome,
     setIdade,
     handleCadastrar,
@@ -24,6 +25,7 @@ export default function CadastraMoradores() {
         nome={nome}
         idade={idade}
         mensagemSucesso={mensagem}
+        erro={erro}
         onFecharMensagemSucesso={limparMensagem}
         carregando={carregando}
         onCadastrar={handleCadastrar}

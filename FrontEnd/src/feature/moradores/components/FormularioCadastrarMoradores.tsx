@@ -5,6 +5,7 @@ import "./FormularioCadastrarMoradores.css";
 export function CadastrarMoradores({
   nome,
   idade,
+  erro,
   mensagemSucesso,
   onFecharMensagemSucesso,
   carregando = false,
@@ -33,6 +34,8 @@ export function CadastrarMoradores({
           onFechar={onFecharMensagemSucesso}
         />
       )}
+
+      {erro && <p className="cadastro-morador__erro">{erro}</p>}
 
       <div className="cadastro-morador__campo">
         <label htmlFor="nome">Nome Completo</label>

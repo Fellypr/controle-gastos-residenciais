@@ -18,7 +18,7 @@ export function useMoradores(){
     async function buscarMoradores() {
         try {
             setCarregando(true);
-            setErro("");
+            setErro(null);
             const resposta = await obterTodosOsMoradores();
             setMoradores(resposta);
         } catch (error) {
@@ -51,8 +51,8 @@ export function useMoradores(){
 
         try {
             setCarregando(true);
-            setErro("");
-            setMensagem("");
+            setErro(null);
+            setMensagem(null);
             const novoMorador = await cadastrarMorador(morador);
             setMoradores((estadoAtual) => [...estadoAtual, novoMorador]);
             setNome("");
@@ -69,8 +69,8 @@ export function useMoradores(){
     async function handleExcluir(id: number) {
         try {
             setCarregando(true);
-            setErro("");
-            setMensagem("");
+            setErro(null);
+            setMensagem(null);
 
             await deletarMorador(id);
 

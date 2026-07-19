@@ -8,7 +8,7 @@ namespace Backend.dtos
         public string Descricao { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O valor é obrigatório.")]
-        [Range(0.01, 9999999, ErrorMessage = "O valor deve ser maior que zero.")]
+        [Range(0.01, 9999999, ErrorMessage = "O valor deve ser maior que zero, e menor que 7 digitos")]
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "O tipo é obrigatório.")]

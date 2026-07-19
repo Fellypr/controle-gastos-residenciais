@@ -9,8 +9,8 @@ namespace Backend.dtos
         [MinLength(2,ErrorMessage ="O nome precisa ter mais que 2 caracteres")]
         public string Nome { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Porfavor informe sua idade")]
-        [Range(0, 120, ErrorMessage = "Por favor, insira uma idade válida entre 0 e 120 anos.")]
+        [Required(ErrorMessage = "Por favor informe sua idade")]
+        [Range(1, 120, ErrorMessage = "Por favor, insira uma idade válida entre 1 e 120 anos.")]
         public int Idade { get; set; }
 
     }

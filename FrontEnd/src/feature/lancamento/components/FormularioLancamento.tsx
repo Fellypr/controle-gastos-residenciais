@@ -19,6 +19,17 @@ export function FormularioLancamento({
   handleMoradorChange,
   alertaDeIdade,
 }: FormularioLancamentoProps) {
+  function handleValorInputChange(valorDigitado: string) {
+    const valorNormalizado = valorDigitado.replace(",", ".");
+
+    // Aceita ate 7 digitos antes do separador decimal e ate 2 casas decimais.
+    if (!/^\d{0,7}([.]\d{0,2})?$/.test(valorNormalizado)) {
+      return;
+    }
+
+    onValorChange(valorDigitado);
+  }
+
   return (
     <form className="lancamento-card" onSubmit={onCadastrar}>
       <h2 className="lancamento-titulo">Novo Lançamento</h2>
@@ -51,12 +62,12 @@ export function FormularioLancamento({
 
         <input
           id="valor"
-          type="number"
-          min="0.01"
-          step="0.01"
+          type="text"
+          inputMode="decimal"
+          maxLength={10}
           placeholder="Ex: 150.00"
           value={valor}
-          onChange={(event) => onValorChange(event.target.value)}
+          onChange={(event) => handleValorInputChange(event.target.value)}
           disabled={carregando}
         />
       </div>
