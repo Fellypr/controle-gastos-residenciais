@@ -8,7 +8,6 @@
   width: 100%;
   height: 72px;
   padding: 0 48px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,9 +61,10 @@
 
 .navbar__menu {
   height: 40px;
-
+  margin-left: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
 }
 
