@@ -35,10 +35,11 @@ export interface FormularioLancamentoProps {
     idade: number;
   }>;
   moradorId: string;
+  alertaDeIdade:string;
   onCadastrar: (event: React.FormEvent<HTMLFormElement>) => void;
   onDescricaoChange: (descricao: string) => void;
   onFecharMensagemSucesso?: () => void;
-  onMoradorChange: (moradorId: string) => void;
+  handleMoradorChange: (moradorId: string) => void;
   onTipoChange: (tipo: TipoTransacao) => void;
   onValorChange: (valor: string) => void;
   tipo: TipoTransacao;

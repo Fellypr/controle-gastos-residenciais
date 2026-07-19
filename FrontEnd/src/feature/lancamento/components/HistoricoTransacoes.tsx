@@ -54,7 +54,7 @@ export function HistoricoTransacoes({
               <th>Descrição</th>
               <th className="coluna-valor">Valor</th>
               <th>Tipo</th>
-              <th>Quem pagou</th>
+              <th>Morador</th>
               <th className="coluna-acoes">Ações</th>
             </tr>
           </thead>

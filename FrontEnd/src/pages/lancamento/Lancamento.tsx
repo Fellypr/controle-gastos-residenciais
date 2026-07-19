@@ -17,7 +17,6 @@ export default function Lancamento() {
     moradores,
     moradorId,
     setDescricao,
-    setMoradorId,
     setTermoBusca,
     setTipo,
     setValor,
@@ -25,6 +24,8 @@ export default function Lancamento() {
     tipo,
     transacoes,
     valor,
+    handleMoradorChange,
+    alertaDeIdade,
   } = useLancamentos();
 
   return (
@@ -39,13 +40,14 @@ export default function Lancamento() {
           moradorId={moradorId}
           carregando={carregando}
           mensagemSucesso={mensagem}
+          alertaDeIdade={alertaDeIdade}
           erro={erro}
           onCadastrar={cadastrarPeloFormulario}
           onDescricaoChange={setDescricao}
           onValorChange={setValor}
-          onMoradorChange={setMoradorId}
           onTipoChange={setTipo}
           onFecharMensagemSucesso={limparMensagem}
+          handleMoradorChange={handleMoradorChange}
         />
         <HistoricoTransacoes
           transacoes={transacoes}

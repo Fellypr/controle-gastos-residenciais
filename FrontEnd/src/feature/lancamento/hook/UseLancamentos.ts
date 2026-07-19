@@ -24,7 +24,10 @@ export function useLancamentos() {
   const [carregando, setCarregando] = useState(false);
   const [mensagem, setMensagem] = useState<string | null>(null);
   const [erro, setErro] = useState<string | null>(null);
+  const [alertaDeIdade,setAlertaDeIdade] = useState<string>("");
 
+  // Pego os dados iniciais quando o hook é montado.
+  // Basicamente faço duas chamadas ao backend em paralelo e guardo o resultado no estado.
   async function carregarDados() {
     try {
       setCarregando(true);
@@ -56,17 +59,36 @@ export function useLancamentos() {
     setMensagem(null);
   }
 
+  // Reseto o formulário depois que a transação é salva.
+  // Isso evita que o usuário tenha que limpar tudo manualmente.
   function limparFormulario() {
     setDescricao("");
     setValor("");
     setTipo("Receita");
     setMoradorId("");
+    setAlertaDeIdade("")
   }
+
+  // Quando o usuário escolhe alguém, eu vejo se essa pessoa é menor de idade.
+  // Se for, já ajusto o tipo da transação pra despesa e aviso no formulário.
+  function handleMoradorChange(id: string) {
+  setMoradorId(id);
+  const morador = moradores.find((item) => item.id === Number(id));
+  if (morador && morador.idade < 18) {
+    setTipo("Despesa");
+    setAlertaDeIdade(`⚠️ ${morador.nome} é menor de idade. Por regras do sistema, apenas despesas podem ser cadastradas para ele.`)
+  }else
+  {
+    setAlertaDeIdade("")
+  }
+}
 
   function converterValorParaNumero(valorDigitado: string) {
     return Number(valorDigitado.replace(",", "."));
   }
 
+  // Aqui eu valido o que o usuário mandou e mando pra API se tudo estiver certo.
+  // Se faltar alguma coisa, eu só mostro a mensagem de erro e paro por ali.
   async function handleCadastrarTransacao(dto: CriarTransacaoDto) {
     if (!dto.descricao.trim()) {
       setErro("Informe a descricao do lancamento.");
@@ -92,7 +114,7 @@ export function useLancamentos() {
 
       setTransacoes((estadoAtual) => [novaTransacao, ...estadoAtual]);
       limparFormulario();
-      setMensagem("Lancamento cadastrado com sucesso.");
+      setMensagem("Transação cadastrado com sucesso.");
     } catch (error) {
       setErro(
         error instanceof Error
@@ -105,6 +127,8 @@ export function useLancamentos() {
     }
   }
 
+  // Quando apaga uma transação, eu chamo o endpoint e removo ela da lista local.
+  // Assim a tela reflete a mudança sem precisar recarregar a página.
   async function handleExcluirTransacao(id: number) {
     try {
       setCarregando(true);
@@ -116,7 +140,6 @@ export function useLancamentos() {
       setTransacoes((estadoAtual) =>
         estadoAtual.filter((transacao) => transacao.id !== id),
       );
-      setMensagem("Lancamento excluido com sucesso.");
     } catch (error) {
       setErro(
         error instanceof Error
@@ -128,6 +151,8 @@ export function useLancamentos() {
     }
   }
 
+  // Essa função é só um gatilho do formulário.
+  // Eu impeço o reload da página e passo os dados para o cadastro real.
   function cadastrarPeloFormulario(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -173,5 +198,7 @@ export function useLancamentos() {
     cadastrarPeloFormulario,
     handleExcluirTransacao,
     limparMensagem,
+    handleMoradorChange,
+    alertaDeIdade,
   };
 }

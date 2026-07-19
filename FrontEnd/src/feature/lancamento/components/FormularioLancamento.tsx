@@ -12,11 +12,12 @@ export function FormularioLancamento({
   onCadastrar,
   onDescricaoChange,
   onFecharMensagemSucesso,
-  onMoradorChange,
   onTipoChange,
   onValorChange,
   tipo,
   valor,
+  handleMoradorChange,
+  alertaDeIdade,
 }: FormularioLancamentoProps) {
   return (
     <form className="lancamento-card" onSubmit={onCadastrar}>
@@ -69,7 +70,7 @@ export function FormularioLancamento({
           <select
             id="morador"
             value={moradorId}
-            onChange={(event) => onMoradorChange(event.target.value)}
+            onChange={(event) => handleMoradorChange(event.target.value)}
             disabled={carregando}
           >
             <option value="">Selecione um morador</option>
@@ -91,9 +92,10 @@ export function FormularioLancamento({
             className={`tipo ${tipo === "Receita" ? "tipo-ativo" : ""}`}
             type="button"
             onClick={() => onTipoChange("Receita")}
-            disabled={carregando}
+            disabled={carregando || alertaDeIdade?.length > 0}
           >
-            <span className="radio radio-ativo" />
+            <span className={`radio ${tipo === "Receita" ? "radio-ativo" : ""}`} />
+
             <span>Receita</span>
           </button>
 
@@ -107,6 +109,9 @@ export function FormularioLancamento({
             <span>Despesa</span>
           </button>
         </div>
+      </div>
+      <div className="alerta-idade">
+        {alertaDeIdade}
       </div>
       <button className="botao-cadastrar" type="submit" disabled={carregando}>
         {carregando ? "Salvando..." : "Cadastrar"}
